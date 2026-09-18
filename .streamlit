@@ -1,0 +1,14 @@
+[theme]
+# Sustainability-inspired green theme
+primaryColor        = "#28a745"
+backgroundColor     = "#f8fff9"
+secondaryBackgroundColor = "#e8f5e9"
+textColor           = "#1f2328"
+font                = "sans serif"
+
+[server]
+headless            = true
+port                = 8501
+
+[browser]
+gatherUsageStats    = false
