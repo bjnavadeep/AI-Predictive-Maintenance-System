@@ -1,0 +1,106 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# AI Predictive Maintenance — Configuration File
+# ─────────────────────────────────────────────────────────────────────────────
+# All magic numbers live here. Calibrate these to your actual plant data
+# before deploying to production.
+# ─────────────────────────────────────────────────────────────────────────────
+
+app:
+  title: "AI-Powered Sustainable Predictive Maintenance System"
+  page_icon: "🌱"
+  layout: "wide"
+  track: "AI for Impact"
+  use_case: "Climate Action & Sustainability"
+  model_accuracy: "98.4%"
+  ml_algorithm: "Random Forest"
+
+# Sensor input defaults shown in the UI
+sensor_defaults:
+  air_temperature_K: 298.1
+  process_temperature_K: 308.6
+  rotational_speed_rpm: 1551
+  torque_Nm: 42.8
+  tool_wear_min: 0
+
+# Thresholds used in the AI assistant and risk logic
+thresholds:
+  # Process temperature above this (K) is flagged as high
+  process_temp_high_K: 310.0
+  # Tool wear above this (min) triggers replacement warning
+  tool_wear_high_min: 180
+  # Torque above this (Nm) is flagged as mechanical overload
+  torque_high_Nm: 55.0
+  # RPM safe operating range
+  rpm_min: 1200
+  rpm_max: 2800
+  # Failure probability bands (0–1)
+  risk_low_max: 0.40
+  risk_moderate_max: 0.70
+
+# Sustainability calculation parameters
+# Replace with measured plant-specific baselines for production use
+sustainability:
+  # Temperature stress reference point (K) — above this, stress increases
+  temp_reference_K: 300.0
+  # Denominator for normalising temperature stress (range size in K)
+  temp_stress_range_K: 20.0
+  # Maximum tool wear for full stress normalisation (min)
+  tool_wear_max_min: 250.0
+  # Torque reference point (Nm) — above this, stress increases
+  torque_reference_Nm: 40.0
+  # Denominator for normalising torque stress (range size in Nm)
+  torque_stress_range_Nm: 30.0
+  # Operational efficiency formula: base - temp_penalty - wear_penalty - torque_penalty
+  efficiency_base: 98.0
+  efficiency_temp_penalty: 12.0
+  efficiency_wear_penalty: 10.0
+  efficiency_torque_penalty: 5.0
+  efficiency_min: 55.0
+  efficiency_max: 99.0
+  # Waste avoided (kg): base + probability * scale
+  waste_base_kg: 0.5
+  waste_scale_kg: 4.5
+  # Downtime avoided (hrs): base + probability * scale
+  downtime_base_hrs: 1.0
+  downtime_scale_hrs: 11.0
+  # Sustainability score weights (must sum to 100)
+  health_weight: 60
+  efficiency_weight: 40
+
+# Color thresholds for the health cards in the dashboard
+# Format: [moderate_threshold, good_threshold]
+card_thresholds:
+  failure_probability:   [40, 70]   # lower is better (reverse scale)
+  machine_health:        [40, 80]   # higher is better
+  operational_efficiency: [70, 90]   # higher is better
+  sustainability_score:  [50, 75]   # higher is better
+
+# Carbon footprint estimation parameters
+# Replace with actual plant grid and power data for production use
+carbon:
+  # Average machine power consumption in kW (typical industrial machine)
+  machine_power_kW: 15.0
+  # Grid carbon intensity in kg CO₂ per kWh (global average ~0.475)
+  grid_carbon_intensity_kgCO2_per_kWh: 0.475
+  # Extra CO₂ from emergency repair logistics vs planned maintenance (kg)
+  emergency_repair_co2_overhead_kg: 12.0
+
+# Remaining Useful Life (RUL) estimation parameters
+rul:
+  # Maximum tool life in minutes before mandatory replacement
+  max_tool_life_min: 250
+  # Assumed average tool wear rate in minutes per operating hour
+  avg_wear_rate_min_per_hr: 3.5
+
+# Sustainability badge thresholds
+badges:
+  platinum: 90
+  gold: 75
+  silver: 50
+
+# Real-time simulation parameters
+realtime:
+  # Tool wear increment per simulation tick (min)
+  wear_increment_min: 5
+  # Simulation tick interval in seconds
+  tick_interval_sec: 2

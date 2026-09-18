@@ -1,0 +1,37 @@
+# Sustainability Architecture
+
+```text
+Industrial Machine / IoT Sensors
+          |
+          v
+   Sensor Input Layer
+          |
+          v
+   Data Preprocessing
+          |
+          v
+ Random Forest Classifier
+          |
+          v
+   Failure Risk Score
+      /         \
+     v           v
+Machine Health   Maintenance Recommendation
+      \         /
+       v       v
+    Sustainability Engine
+       |       |       |
+       v       v       v
+   Waste     Downtime  Operational
+  Avoided    Avoided   Efficiency
+       \       |       /
+        \      |      /
+          v   v   v
+      Sustainability Score
+              |
+              v
+       Streamlit Dashboard
+              |
+              v
+     IBM Bob Explanation Layer
+```
