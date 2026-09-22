@@ -104,3 +104,20 @@ realtime:
   wear_increment_min: 5
   # Simulation tick interval in seconds
   tick_interval_sec: 2
+
+# IBM watsonx.ai integration (IBM Bob's underlying model platform)
+# Set WATSONX_API_KEY and WATSONX_PROJECT_ID as environment variables
+# or in a .env file — never commit secrets to source control.
+watsonx:
+  # eu-gb London endpoint — matches your project region
+  url: "https://eu-gb.ml.cloud.ibm.com/ml/v1/text/generation?version=2024-05-31"
+  # Confirmed available on eu-gb (from live API check)
+  model_id: "meta-llama/llama-3-3-70b-instruct"
+  # Max tokens for the response
+  max_new_tokens: 400
+  # Decoding strategy
+  decoding_method: "greedy"
+  # Industry-average sustainability score used for benchmark comparison
+  industry_avg_sustainability: 65
+  # Industry-average CO2 avoided (kg) per maintenance event for benchmark
+  industry_avg_co2_avoided_kg: 8.5
