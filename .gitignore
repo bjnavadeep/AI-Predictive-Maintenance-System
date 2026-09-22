@@ -31,3 +31,6 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Environment variable files with secrets (never commit these)
+.env
